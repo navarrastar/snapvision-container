@@ -1,0 +1,8 @@
+https://download.pytorch.org/whl/nightly/cpu/torch-2.3.0.dev20231214%2Bcpu-cp311-cp311-linux_x86_64.whl
+https://download.pytorch.org/whl/nightly/cpu/torchvision-0.18.0.dev20231214%2Bcpu-cp311-cp311-linux_x86_64.whl
+vidgear
+gunicorn[gevent]
+ultralytics
+Flask
+yt_dlp
+flask-cors
