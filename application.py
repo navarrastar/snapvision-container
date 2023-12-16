@@ -7,7 +7,7 @@ from vidgear.gears import CamGear
 from flask_cors import CORS
 
 application = Flask(__name__)
-CORS(application)
+CORS(application, supports_credentials=True, origins="https://*.ext-twitch.tv")
 
 stream_url = "https://www.twitch.tv/marvelsnapvision"
 
