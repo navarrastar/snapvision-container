@@ -48,4 +48,4 @@ COPY . .
 EXPOSE 8000
 
 # Run the application.
-CMD gunicorn 'application:application' --bind=0.0.0.0:8000 -k 'gevent' --keyfile 'key.pem' --certfile 'cert.pem'
+CMD gunicorn 'application:application' --bind=0.0.0.0:8000 -k 'gevent'
