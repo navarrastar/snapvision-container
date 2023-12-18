@@ -6,8 +6,8 @@ import sqlite3
 from vidgear.gears import CamGear
 from flask_cors import CORS
 
-application = Flask(__name__)
-CORS(application, supports_credentials=True, origins="https://*.ext-twitch.tv")
+app = Flask(__name__)
+CORS(app, supports_credentials=True, origins="https://*.ext-twitch.tv")
 
 stream_url = "https://www.twitch.tv/marvelsnapvision"
 
@@ -66,14 +66,18 @@ def get_class_data(class_name):
         return {"name": data[0], "description": data[3], "image": data[4]}
     else: return None
 
-@application.route('/stream')
+@app.route("/")
+def hello():
+    return "<h1 style='color:blue'>Hello There!</h1>"
+
+@app.route('/stream')
 def stream():
     return Response(get_coords(), mimetype='text/event-stream')
 
 with open('class_names.json') as f:
     class_names = json.load(f)
 
-@application.route('/classify_card', methods=['POST'])
+@app.route('/classify_card', methods=['POST'])
 def classify_card():
     if request.method != 'POST':
         return
@@ -90,4 +94,4 @@ def classify_card():
     return('', 204)
 
 if __name__ == '__main__':
-    application.run(ssl_context=('cert.pem', 'key.pem'))
+    app.run(host='0.0.0.0')
